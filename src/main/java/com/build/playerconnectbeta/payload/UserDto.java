@@ -7,6 +7,7 @@ import jakarta.validation.constraints.Size;
 import lombok.Data;
 
 import java.util.List;
+import java.util.Optional;
 
 @Data
 public class UserDto {
@@ -27,6 +28,6 @@ public class UserDto {
     private String email;
 
     @NotEmpty
-    @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$", message = "Password should be atleast 8 chars, Contains at least one digit, one lower alpha char and one upper alpha char, Does not contain space.")
+    @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$", message = "Password should be atleast 8 chars, Contains at least one digit, one lower alpha char and one upper alpha char, does not contain space.")
     private String password;
 }

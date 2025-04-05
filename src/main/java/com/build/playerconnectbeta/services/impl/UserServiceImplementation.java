@@ -1,6 +1,7 @@
 package com.build.playerconnectbeta.services.impl;
 
 import com.build.playerconnectbeta.entity.User;
+import com.build.playerconnectbeta.exceptions.ResourceNotFoundException;
 import com.build.playerconnectbeta.payload.UserDto;
 import com.build.playerconnectbeta.repository.UserRepository;
 import com.build.playerconnectbeta.services.UserService;
@@ -27,25 +28,26 @@ public class UserServiceImplementation implements UserService {
 
     @Override
     public UserDto updateUser(UserDto userDto, Integer userId) {
-        User user = userRepository.findById(userId).orElseThrow(null);
+        User user = userRepository.findById(userId).orElseThrow(()->new ResourceNotFoundException("User", userId));
         user.setName(userDto.getName());
         user.setEmail(userDto.getEmail());
         user.setPhone(userDto.getPhoneNo());
         user.setPassword(userDto.getPassword());
         user.setAddress(userDto.getAddress());
+        user.setGames(userDto.getGames());
         User savedUser = userRepository.save(user);
         return modelMapper.map(savedUser, UserDto.class);
     }
 
     @Override
     public void deleteUser(Integer userId) {
-        User user = userRepository.findById(userId).orElse(null);
+        User user = userRepository.findById(userId).orElseThrow(()-> new ResourceNotFoundException("User", userId));
         userRepository.delete(user);
     }
 
     @Override
     public UserDto getUserById(Integer userId) {
-        User user = userRepository.findById(userId).orElse(null);
+        User user = userRepository.findById(userId).orElseThrow(()-> new ResourceNotFoundException("User", userId));
         return modelMapper.map(user, UserDto.class);
     }
 
