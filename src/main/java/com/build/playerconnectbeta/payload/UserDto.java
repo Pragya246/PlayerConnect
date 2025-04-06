@@ -17,7 +17,7 @@ public class UserDto {
     @Size(min = 2, max = 50, message = "Name should be of atleast 2 characters.")
     private String name;
 
-    @NotEmpty
+    @Pattern(regexp = "^[6-9]\\d{9}$")
     private String phoneNo;
 
     private List<String> games;
