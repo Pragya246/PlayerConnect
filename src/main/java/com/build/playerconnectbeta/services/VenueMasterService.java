@@ -9,18 +9,16 @@ import java.util.List;
 public interface VenueMasterService {
 
     VenueMasterDto createVenueMaster(VenueMasterDto venueMaster);
-    // Method to create a new venue
-    VenueMasterDto createVenue(VenueMasterDto venueMaster);
 
     // Method to get all venues
-    List<VenueMasterDto> getAllVenues();
+//    List<VenueMasterDto> getAllVenues();
 
     // Method to get a venue by ID
-    VenueMasterDto getVenueById(int id);
+    VenueMasterDto getVenueMasterById(int id);
 
     // Method to update a venue
-    VenueMasterDto updateVenue(int id, VenueMasterDto venueMaster);
+    VenueMasterDto updateVenueMaster(int id, VenueMasterDto venueMaster);
 
     // Method to delete a venue
-    void deleteVenue(int id);
+    void deleteVenueMaster(int id);
 }
