@@ -28,27 +28,24 @@ public class VenueMasterServiceImplementation implements VenueMasterService {
     }
 
     @Override
-    public VenueMasterDto createVenue(VenueMasterDto venueMaster) {
-        VenueMaster venueMasterEntity = modelMapper.map(venueMaster, VenueMaster.class);
-
-    }
-
-    @Override
-    public List<VenueMasterDto> getAllVenues() {
-        List<VenueMaster> venueMasters = venueMasterRepository.findAll();
-        return venueMasters.stream()
-                .map(venueMaster -> modelMapper.map(venueMaster, VenueMasterDto.class))
-                .toList();
-    }
-
-    @Override
-    public VenueMasterDto getVenueById(int id) {
+    public VenueMasterDto getVenueMasterById(int id) {
         VenueMaster venueMaster = venueMasterRepository.findById(id).orElseThrow(()-> new ResourceNotFoundException("venue master",id));
         return modelMapper.map(venueMaster, VenueMasterDto.class);
     }
 
+
+//    @Override
+//    public List<VenueMasterDto> getAllVenueMaster() {
+//        List<VenueMaster> venueMasters = venueMasterRepository.findAll();
+//        return venueMasters.stream()
+//                .map(venueMaster -> modelMapper.map(venueMaster, VenueMasterDto.class))
+//                .toList();
+//    }
+
+
+
     @Override
-    public VenueMasterDto updateVenue(int id, VenueMasterDto venueMasterDto) {
+    public VenueMasterDto updateVenueMaster(int id, VenueMasterDto venueMasterDto) {
         VenueMaster venueMaster1 = venueMasterRepository.findById(id).orElseThrow(()->new ResourceNotFoundException("venue master", id));
         venueMaster1.setName(venueMasterDto.getName());
         venueMaster1.setAddress(venueMasterDto.getAddress());
@@ -57,7 +54,7 @@ public class VenueMasterServiceImplementation implements VenueMasterService {
     }
 
     @Override
-    public void deleteVenue(int id) {
+    public void deleteVenueMaster(int id) {
         VenueMaster venueMaster = venueMasterRepository.findById(id).orElseThrow(()->new ResourceNotFoundException("venue master", id));
         venueMasterRepository.delete(venueMaster);
     }

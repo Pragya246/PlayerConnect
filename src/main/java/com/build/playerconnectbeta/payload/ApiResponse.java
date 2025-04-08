@@ -7,7 +7,7 @@ import lombok.Data;
 @AllArgsConstructor
 public class ApiResponse {
 
-    String error;
+    String message;
     boolean status;
 
 }
